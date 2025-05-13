@@ -1,12 +1,33 @@
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
 import Layout from "../components/layout/Layout";
-import { Link } from "react-router-dom";
-
+import { Link,useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
 
 const Job = () => {
+    const {id}= useParams()
+    const [loading, setLoading] = useState(false);
+  
+    const [work, setjobUpdates] = useState([]);
+
+    const getWork = async () => {
+      try {
+        setLoading(true);
+        const { data } = await axios.get(`${import.meta.env.VITE_APP_BACKEND}/api/v1/work//getone-work/${id}`);
+        setjobUpdates(data.data);
+      } catch (error) {
+        console.error(error);
+        toast.error("Something went wrong");
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    useEffect(() => {
+      getWork();
+    }, []);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -29,7 +50,12 @@ const Job = () => {
   };
 
     const handleSubmit = (e) => {
+
     e.preventDefault();
+      if (!formData.name || formData.country || formData.phone ) {
+              alert('Please fill in all required fields');
+              return;
+            }
     setIsSending(true); // Set to true when sending starts
 
 

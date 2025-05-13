@@ -9,7 +9,7 @@ const Layout = ({
   children,
   title = "Benefitz International ",
   description = "Explore our expert immigration and educational consulting services, unlock career pathways abroad, and experience trusted guidance every step of the way with Benifitz—where your future takes flight!",
-  keywords = "benifitzintl.in, benifitz international, benifitz, consultancy, job,",
+  keywords = "benifitzintl.in, benifitz international, benifitz, consultancy, job ,",
   author = "ajith-balan"
 }) => {
   return (

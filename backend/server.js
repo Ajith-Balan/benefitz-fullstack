@@ -6,6 +6,7 @@ import categoryRoutes from './router/categoryRoutes.js'
 import countryRoutes from './router/countryRoutes.js'
 import cors from 'cors'
 import path from 'path';
+import workRoutes from './router/workRoutes.js'
 dotenv.config()
 connection()
 const app = express()
@@ -14,6 +15,8 @@ app.use(express.json({ limit: "50mb" }));
 
 
 app.use('/api/v1/auth',auth)
+app.use('/api/v1/work',workRoutes)
+
 app.use('/api/v1/category',categoryRoutes);
 // app.get('/',(req,res)=>{
 //     res.send({message:'welcome to ecom app'})

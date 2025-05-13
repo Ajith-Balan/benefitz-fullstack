@@ -23,10 +23,8 @@ const AdminMenu = () => {
             { path: "/dashboard/admin", name: "Dashboard" },
             { path: "/dashboard/admin/countries", name: "Countries" },
             { path: "/dashboard/admin/create-country", name: "Add Country" },
-            { path: "/addnews", name: "Add News" },
             { path: "/dashboard/admin/users", name: "Users" },
-            { path: "/news", name: "Newses" },
-            { path: "/dashboard/admin/refferals", name: "Referrals" },
+            { path: "/dashboard/admin/works", name: "Latest Update" },
           ].map((item, index) => (
             <Link key={index} to={item.path}>
               <li className="hover:bg-gray-700 p-2 rounded-md cursor-pointer text-center md:text-left">

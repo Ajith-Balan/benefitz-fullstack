@@ -32,6 +32,9 @@ import Countries from './pages/Admin/Countries';
 import Users from './pages/Admin/Users';
 import Refferals from './pages/Admin/Refferals';
 import Refferal from './pages/user/Refferal';
+import LatestJobs from './pages/LatestJobs';
+import LatestUpdate from './pages/Admin/LatestUpdate';
+import Premium from './pages/Premium';
 function App() {
   return (
     <>
@@ -53,11 +56,14 @@ function App() {
           {/* Private Route Wrapper */}
           <Route path='/dashboard' element={<AdminRoute />} >
           <Route path='admin' element={<AdminDashboard />} />
+          <Route path='admin/create-category' element={<CreateCategory/>} />
+
           <Route path='admin/create-country' element={<CreateCountry/>} />
           <Route path='admin/updateCountry/:id' element={<UpdateCountry/>}/>
           <Route path='admin/users' element={<Users/>} />
-          <Route path='admin/refferals' element={<Refferals/>} />
+          <Route path='admin/ref/:id' element={<Refferals/>} />
 
+          <Route path='admin/works' element={<LatestUpdate/>} />
 
           <Route path='admin/countries' element={<Countries/>} />
 
@@ -77,6 +83,7 @@ function App() {
 
           <Route path='/job' element={<Job />} />
         <Route path='/study' element={<Study />} />
+        <Route path='/premium' element={<Premium />} />
 
 
         <Route path='/visiting-visa' element={<Visitvisa />} />
@@ -86,6 +93,8 @@ function App() {
 
 
         <Route path='/immigration' element={<Immigration />} />
+        <Route path='/latestjobs/:id' element={<LatestJobs />} />
+
 
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />

@@ -27,6 +27,10 @@ const Visitvisa = () => {
 
     const handleSubmit = (e) => {
     e.preventDefault();
+      if (!formData.name || formData.country || formData.phone ) {
+              alert('Please fill in all required fields');
+              return;
+            }
     setIsSending(true); // Set to true when sending starts
 
 

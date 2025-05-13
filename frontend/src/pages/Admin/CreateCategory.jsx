@@ -13,6 +13,10 @@ const CreateCategory = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+        if (!name ) {
+          toast.error('Please fill in all required fields');
+          return;
+        }
     try {
       const { data } = await axios.post(`${import.meta.env.VITE_APP_BACKEND}/api/v1/category/create-category`, {
         name,
@@ -138,6 +142,15 @@ const CreateCategory = () => {
                     onChange={(e) => handleImageUpload(e, setPhoto)}
                     required
                   />
+                    {photo && (
+    <div className="mt-4">
+      <img
+        src={photo}
+        alt="Preview"
+        className="h-40 w-40 object-cover rounded border border-gray-300"
+      />
+    </div>
+  )}
                 </div>
 
                 <button

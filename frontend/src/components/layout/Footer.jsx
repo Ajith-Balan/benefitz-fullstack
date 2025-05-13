@@ -5,7 +5,7 @@ import { FaInstagram, FaWhatsapp, FaEnvelope,  } from 'react-icons/fa';
 const Footer = () => {
   const handleWhatsAppClick = () => {
     const phoneNumber = '6235846558'; // Replace with your WhatsApp number
-    const message = 'Hello! I would like to inquire about...';
+    const message = 'Hello! I would like to talk to a Benefitz International Expert';
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   };
@@ -142,9 +142,9 @@ const Footer = () => {
       {/* Floating Button */}
       <button
       onClick={handleWhatsAppClick}
-      className="fixed bottom-12 right-10 bg-green-400 text-white rounded-full p-4 shadow-lg hover:bg-green-600 transition-all"
+      className="fixed flex gap-3 bottom-12 right-10 bg-white   text-black rounded-full px-4 p-2 shadow-lg hover:bg-green-600 transition-all"
     >
-      <FaWhatsapp size={24} />
+      <FaWhatsapp size={24} className=" rounded-full text-green-400" />  Contact us
     </button>
     </footer>
   );

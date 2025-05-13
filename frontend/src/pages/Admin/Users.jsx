@@ -3,6 +3,7 @@ import Layout from '../../components/layout/Layout';
 import AdminMenu from '../../components/layout/AdminMenu.jsx';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -50,21 +51,37 @@ const Users = () => {
                 <div className="w-full">
                   <table className="w-full border-collapse border border-gray-300">
                     <thead>
-                      <tr className="bg-gray-200">
+                      <tr className="bg-green-700">
                         <th className="border p-2">#</th>
                         <th className="border p-2">Name</th>
                         <th className="border p-2">Phone</th>
                         <th className="border p-2">Joined Date</th>
+                        <th className="border p-2"> Details</th>
                       </tr>
                     </thead>
                     <tbody>
                       {subscribedUsers.map((user, index) => (
-                        <tr key={user._id} className="border">
-                          <td className="border p-2 text-center">{index + 1}</td>
+
+                        <tr key={user._id} className="text-center border">
+
+                          <td className="border p-2 ">{index + 1}</td>
+
                           <td className="border p-2">{user.name}</td>
+
                           <td className="border p-2">{user.phone}</td>
-                          <td className="border p-2">{new Date(user.createdAt).toLocaleDateString()}</td>
+                          <td className="border p-2">{new Date(user.updatedAt).toLocaleDateString('en-GB')}</td>
+                          <Link className='w-full' to={`/dashboard/admin/ref/${user._id}`}>
+
+                          <td className='text-center text-blue-500 p-2 hover:bg-gray-300'>
+
+
+                              Details
+
+                          </td>
+                          </Link>
+
                         </tr>
+
                       ))}
                     </tbody>
                   </table>
@@ -73,22 +90,22 @@ const Users = () => {
                 {/* Non-Subscribed Users */}
                 <h2 className="text-lg font-semibold mt-4">Non-Subscribed Users</h2>
                 <div className="overflow-x-auto">
-                  <table className="min-w-full border-collapse border border-gray-300">
+                  <table className="min-w-full border-collapse bg-gray-200 border border-white">
                     <thead>
-                      <tr className="bg-gray-200">
-                        <th className="border p-2">#</th>
-                        <th className="border p-2">Name</th>
-                        <th className="border p-2">Phone</th>
-                        <th className="border p-2">Joined Date</th>
+                      <tr className="bg-gray-200 ">
+                        <th className="border border-white p-2">#</th>
+                        <th className="border border border-white p-2">Name</th>
+                        <th className="border border border-white p-2">Phone</th>
+                        <th className="border border border-white p-2">Joined Date</th>
                       </tr>
                     </thead>
                     <tbody>
                       {nonSubscribedUsers.map((user, index) => (
-                        <tr key={user._id} className="border">
-                          <td className="border p-2 text-center">{index + 1}</td>
-                          <td className="border p-2">{user.name}</td>
-                          <td className="border p-2">{user.phone}</td>
-                          <td className="border p-2">{new Date(user.createdAt).toLocaleDateString()}</td>
+                        <tr key={user._id} className=" text-center  border-white border">
+                          <td className="border border-white p-2 ">{index + 1}</td>
+                          <td className="border border-white p-2">{user.name}</td>
+                          <td className="border border-white p-2">{user.phone}</td>
+                          <td className="border border-white p-2">{new Date(user.createdAt).toLocaleDateString('en-GB')}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -100,7 +117,7 @@ const Users = () => {
                 <div className="overflow-x-auto">
                   <table className="min-w-full border-collapse border border-gray-300">
                     <thead>
-                      <tr className="bg-gray-200">
+                      <tr className="bg-blue-800">
                         <th className="border p-2">#</th>
                         <th className="border p-2">Name</th>
                         <th className="border p-2">Phone</th>
@@ -109,11 +126,11 @@ const Users = () => {
                     </thead>
                     <tbody>
                       {recentUsers.map((user, index) => (
-                        <tr key={user._id} className="border">
-                          <td className="border p-2 text-center">{index + 1}</td>
+                        <tr key={user._id} className="border  text-center">
+                          <td className="border p-2">{index + 1}</td>
                           <td className="border p-2">{user.name}</td>
                           <td className="border p-2">{user.phone}</td>
-                          <td className="border p-2">{new Date(user.createdAt).toLocaleDateString()}</td>
+                          <td className="border p-2">{new Date(user.createdAt).toLocaleDateString('en-GB')}</td>
                         </tr>
                       ))}
                     </tbody>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaPhoneAlt, FaWhatsapp,FaCrown, FaInstagram } from "react-icons/fa";
 import { IoSearchSharp } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link ,useNavigate} from "react-router-dom";
 import MarqueeText from "../MarqueeText";
 import { useAuth } from '../../context/Auth';
 import { Space } from "lucide-react";
@@ -16,7 +16,7 @@ const Header = () => {
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
-
+  const navigate = useNavigate();
 
 
 
@@ -61,12 +61,21 @@ const Header = () => {
               About Us
               </Link>
             </div>
-            <Link to={`/regester`}>
-            <button className="flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-2 py-2 rounded shadow-lg font-semibold hover:scale-105 transition-transform">
+            {!auth.user?.receipt ? (
+  <Link to="/premium">
+    <button className="flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-2 py-2 rounded shadow-lg font-semibold hover:scale-105 transition-transform">
       <FaCrown className="text-xl" />
-      Subscribe - ₹999
+      Subscribe Now- ₹999
     </button>
-         </Link>
+  </Link>
+) : (
+  <Link to={'/premium'} className="flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-2 py-2 rounded shadow-lg font-semibold hover:scale-105 transition-transform cursor-default">
+    <FaCrown className="text-xl" />
+    Premium Member
+  </Link>
+)}
+
+
           </div>
 
           <div className="md:hidden">
@@ -94,10 +103,11 @@ const Header = () => {
             <Link to="/login" className="px-6 py-3 hover:bg-blue-500">Login</Link>
           )}
           <Link to="/services" className="px-6 py-3 hover:bg-blue-500">Services</Link>
+          <Link to="/job" className="px-6 py-3 hover:bg-blue-500">Job Consultancy</Link>
+
           <Link to="/study" className="px-6 py-3 hover:bg-blue-500">Study Visa</Link>
           <Link to="/visiting-visa" className="px-6 py-3 hover:bg-blue-500">Visiting Visa</Link>
-          <Link to="/job" className="px-6 py-3 hover:bg-blue-500">Job Consultancy</Link>
-          <Link to="/immigration" className="px-6 py-3 hover:bg-blue-500">Immigration</Link>
+          {/* <Link to="/immigration" className="px-6 py-3 hover:bg-blue-500">Immigration</Link> */}
 
           {/* Contact Info */}
           <div className="px-6 py-3 flex items-center border-t border-white">
@@ -134,6 +144,11 @@ const Header = () => {
               Services
           </div>
           </Link>
+          <Link to={`/job`}>
+        <div className="group text-center w-32 hover:text-white flex items-center justify-center h-12 border hover:bg-pink-400 hover:border-pink-500">
+              Job Consaltancy
+          </div>
+        </Link>
 
        <Link to={`/study`}>
        <div className="group text-center w-32 flex items-center justify-center h-12 border hover:bg-emerald-400 hover:text-white hover:border-emerald-500">
@@ -145,18 +160,14 @@ const Header = () => {
              Visa
           </div>
          </Link>
-        <Link to={`/job`}>
-        <div className="group text-center w-32 hover:text-white flex items-center justify-center h-12 border hover:bg-pink-400 hover:border-pink-500">
-              Job Consaltancy
-          </div>
-        </Link>
-          <Link to={'/immigration'}>
+     
+          {/* <Link to={'/immigration'}>
           <div className="group text-center hover:text-white w-32 flex items-center justify-center h-12 border hover:bg-yellow-400 hover:border-yellow-500">
 
             Immigration
             </div> 
 
-            </Link>        
+            </Link>         */}
                {auth?.user? (
 
         <Link to={dashboardPath}>

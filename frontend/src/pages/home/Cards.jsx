@@ -51,7 +51,7 @@ const Cards = () => {
      
           {cardDetails.map((card) => (
         <Link to={`/country/${card._id}`}>
-                <div key={card.id} className="flex justify-center items-center">
+                <div key={card._id} className="flex justify-center items-center">
               <div className="flip-card w-60 h-60 sm:w-72 sm:h-72 lg:w-80 lg:h-80">
                 <div className="flip-card-inner">
                   <div className="flip-card-front flex flex-col justify-center items-center bg-white border p-6 overflow-hidden h-36 w-36">

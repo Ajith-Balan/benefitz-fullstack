@@ -48,16 +48,17 @@ useEffect(() => {
 
 
 
-  if (loading) {
-    return <div className="text-center">Loading...</div>;
-  }
+
 
   if (error) {
     return <div className="text-center text-red-500">Error: {error}</div>;
   }
 
-  return (
-    <div className="container mx-auto p-4 sm:p-6 border mt-10">
+return loading ? (
+  <div className="flex justify-center items-center h-screen bg-[#F3F7F3]">
+    <div className="w-16 h-16 border-4 border-green-600 border-dashed rounded-full animate-spin"></div>
+  </div>
+) : (    <div className="container mx-auto p-4 sm:p-6 border mt-10">
       <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-6 w-full">
       <div className="flex flex-col justify-center text-center md:text-left">
           

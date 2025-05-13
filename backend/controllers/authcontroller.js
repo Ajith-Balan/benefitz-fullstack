@@ -215,6 +215,33 @@ export async function getUsers(req,res){
 
 
 
+
+
+export async function getoneUser(req,res){
+  try{
+const {id} = req.params
+
+      const data=await userModel.findOne({_id:id});
+
+      if (!data) {
+        return res.status(404).send({ message: "User not found" });
+      }
+  
+      const referredUsers = await userModel.find({ invitecode: data.usercode }); // Adjust field if needed
+      res.status(200).send({
+        data, referredUsers
+      });
+  }catch (error){
+      res.status(500).send(error)
+  }
+}
+
+
+
+
+
+
+
 // Import necessary modules
 
 export const updatePassword = async (req, res) => {
@@ -346,7 +373,7 @@ export const updatePassword = async (req, res) => {
 
   export async function createOrder(req,res){
     const options = {
-      amount: 9900,
+      amount: 99900,
       currency: "INR",
       receipt: crypto.randomBytes(10).toString("hex"),
     };
@@ -397,6 +424,30 @@ export const updatePassword = async (req, res) => {
 
 
 
+
+
+
+
+  export const searchuserController = async(req,res)=>{
+    try {
+      const {keyword}= req.params
+      const results= await userModel.find({
+        $or:[
+          {name:{$regex : keyword,$options :"i"}},
+          {description:{$regex : keyword,$options:"i"}}
+        ]
+      })
+      res.send(results);
+    } catch (error) {
+      console.log(error);
+      res.status(400).send({
+        success: false,
+        error,
+        message:"error in search product"
+      })
+      
+    }
+  }
 
 
 

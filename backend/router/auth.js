@@ -11,6 +11,7 @@ import {
   createOrder,
   verifyPayment,
   getUsers,
+  getoneUser,
 } from '../controllers/authcontroller.js';
 import { isAdmin, requireSignIn } from '../middlewares/authmiddleware.js';
 
@@ -21,6 +22,10 @@ router.post('/register', registerController);
 
 // User login route
 router.post('/login', loginController);
+
+
+router.get('/getoneuser/:id' ,getoneUser)
+
 
 // Test route for admin access, protected by sign-in and admin check
 router.get('/test', requireSignIn, isAdmin, testController);
