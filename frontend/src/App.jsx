@@ -35,6 +35,7 @@ import Refferal from './pages/user/Refferal';
 import LatestJobs from './pages/LatestJobs';
 import LatestUpdate from './pages/Admin/LatestUpdate';
 import Premium from './pages/Premium';
+import UpdateNews from './pages/Admin/UpdateNews';
 function App() {
   return (
     <>
@@ -66,6 +67,8 @@ function App() {
           <Route path='admin/works' element={<LatestUpdate/>} />
 
           <Route path='admin/countries' element={<Countries/>} />
+         <Route path='admin/updatenews/:id' element={<UpdateNews/>} />
+
 
 
 

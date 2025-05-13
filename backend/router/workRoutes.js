@@ -14,7 +14,7 @@ router.get('/get-work', getworkcontroller)
 
 router.get('/getone-work/:id', getonework)
 
-router.post('/update-work/:id', updatework)
+router.put('/update-work/:id', updatework)
 
 
 router.delete('/delete-work/:id', deletework)
